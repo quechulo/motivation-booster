@@ -15,7 +15,7 @@ async function insertDocument(client, document) {
   //   .find({ email: document.email })
   //   .toArray();
 
-  await db.collection("mails").insertOne(document);
+  await db.collection("users").insertOne(document);
   // if (documents.length < 1) {
   //   await db.collection("users").insertOne(document);
   // } else {
@@ -25,7 +25,6 @@ async function insertDocument(client, document) {
 
 async function handler(req, res) {
   if (req.method === "POST") {
-    // TODO create email using chatgpt
     const email = req.body.email;
     const name = req.body.name;
 
@@ -44,7 +43,7 @@ async function handler(req, res) {
 
     try {
       await insertDocument(client, newUser);
-      res.status(201).json({ message: "Email added!" });
+      res.status(201).json({ message: "Signed up!" });
     } catch (error) {
       if (error.message) {
         res.status(500).json({ message: error.message });
@@ -65,8 +64,8 @@ async function handler(req, res) {
     }
     try {
       const db = client.db();
-      const documents = await db.collection("mails").find().toArray();
-      res.status(201).json({ mails: documents });
+      const documents = await db.collection("users").find().toArray();
+      res.status(201).json({ users: documents });
     } catch (error) {
       res.status(500).json({ message: "Reading from database failed!" });
       return;

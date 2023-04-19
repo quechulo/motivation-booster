@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '@/styles/Home.module.css'
+
 import { useRef, useState } from "react";
 
 
@@ -14,9 +14,9 @@ export default function Home() {
     const enteredEmail = emailInputRef.current.value;
     const enteredName = nameInputRef.current.value;
 
-    // {email: 'eldorado@op.pl', text: 'You make good job'}
-    fetch("/api/mails", {
-      method: "POST", // or 'PUT'
+    
+    fetch("/api/users", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -32,14 +32,15 @@ export default function Home() {
   };
 
   const loadPrevMailsHandler = () => {
-    fetch("/api/feedback")
+    fetch("/api/mails")
       .then((response) => response.json())
       .then((data) => {
-        setAllFeedback(data.feedback);
+        setPrevMails(data.mails);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
+      console.log(prevMails);
     }
 
 
@@ -52,9 +53,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-      <h1>The Home Page</h1>
-      <form onSubmit={submitFormHandler}>
+      <main>
+      <h1>Motivate Yourself with Motivation Booster!</h1>
+      <form onSubmit={submitFormHandler} className='newsletter'>
         <div>
           <label htmlFor="email">Your email address</label>
           <input type="email" id="email" ref={emailInputRef} />
@@ -63,17 +64,23 @@ export default function Home() {
           <label htmlFor="name">Your Name</label>
           <input id="name" rows="5" ref={nameInputRef}></input>
         </div>
-        <button>Sing Me In</button>
+        <button className='button'>Sing Me In</button>
       </form>
       
-      <button onClick={loadPrevMailsHandler}>Load all feedback</button>
-      <ul>
+      <button className='button' onClick={loadPrevMailsHandler}>Load all feedback</button>
+  
         {prevMails.map((mail) => (
-          <li key={mail.id}>
-            { mail.body }
-          </li>
+          
+            <div className='email'>
+              <h2>
+              { mail.subject }
+              </h2>
+            
+            <text>{ mail.body }</text>
+            </div>
+            
         ))}
-      </ul>
+    
 
       </main>
     </>
