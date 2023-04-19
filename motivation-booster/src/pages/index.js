@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
 import { useRef, useState } from "react";
+import EmailList from './components/EmailList';
 
 
 export default function Home() {
@@ -40,7 +41,6 @@ export default function Home() {
       .catch((error) => {
         console.error("Error:", error);
       });
-      console.log(prevMails);
     }
 
 
@@ -55,33 +55,29 @@ export default function Home() {
 
       <main>
       <h1>Motivate Yourself with Motivation Booster!</h1>
-      <form onSubmit={submitFormHandler} className='newsletter'>
+
+      <div className='description'>
+      <p>Have You ever felt unmotivated to do things you really need to be doing?</p>
+      <p>Sing in now and get motivational emails wrote by Artificial Intelligence using ChatGPT</p>
+      </div>
+      
+      <form onSubmit={submitFormHandler}>
         <div>
           <label htmlFor="email">Your email address</label>
           <input type="email" id="email" ref={emailInputRef} />
         </div>
         <div>
           <label htmlFor="name">Your Name</label>
-          <input id="name" rows="5" ref={nameInputRef}></input>
+          <input type='text' rows="5" ref={nameInputRef}></input>
         </div>
-        <button className='button'>Sing Me In</button>
+        <button type='submit'> Sing Me In</button>
       </form>
       
-      <button className='button' onClick={loadPrevMailsHandler}>Load all feedback</button>
-  
-        {prevMails.map((mail) => (
-          
-            <div className='email'>
-              <h2>
-              { mail.subject }
-              </h2>
-            
-            <text>{ mail.body }</text>
-            </div>
-            
-        ))}
-    
+      <h3>Here You can check previously sent emails to our follwers!</h3>
+      <button type='submit' className='button' onClick={loadPrevMailsHandler}>Show recently sent emails</button>
 
+        <EmailList emails={prevMails.slice(prevMails.length-3, prevMails.length)} />
+    
       </main>
     </>
   )

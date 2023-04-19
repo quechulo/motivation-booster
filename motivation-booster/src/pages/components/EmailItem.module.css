@@ -1,0 +1,23 @@
+.emailitem {
+    border: 1px solid #ccc;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 70%;
+  }
+
+  .emailheader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .emailsubject {
+    font-weight: bold;
+  }
+  
+  .emailmessage {
+    display: block;
+    margin-top: 10px;
+  }
