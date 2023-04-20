@@ -11,6 +11,7 @@ body {
   font-family: 'Open Sans', 'Lato', sans-serif;
   color: #414141;
   background-color: #e4f1f1;
+  text-align: center;
 } 
 
 h1,
@@ -27,11 +28,6 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-.center {
-  margin: auto;
-  text-align: center;
 }
 
 .description {
@@ -88,31 +84,6 @@ button[type="submit"]:hover {
   background-color: #032750;
 }
 
-/* .button {
-  display: flex;
-  justify-content: center;
-}
-
-button{
-  padding: 25px 30px;
-  background-color: #e8eae4;
-  color: #03e9f4;
-  font-weight: bold;
-  border-radius: 5px;
-  letter-spacing: 4px;
-  overflow: hidden;
-  transition: 0.5s;
-  cursor: pointer;
-}
-
-button:hover{
-    background: #03e9f4;
-    color: #050801;
-    box-shadow: 0 0 5px #03e9f4,
-                0 0 25px #03e9f4,
-                0 0 50px #03e9f4,
-                0 0 200px #03e9f4;
-} */
 
 .email {
   margin: 40px;
