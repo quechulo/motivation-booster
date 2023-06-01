@@ -74,13 +74,11 @@ export default function Home() {
         </div>
 
         <form onSubmit={submitFormHandler}>
-          <div>
-            <label htmlFor="email">Your email address</label>
-            <input type="email" id="email" ref={emailInputRef} />
+          <div className="email">
+            <input placeholder="Your Email" type="email" id="email" ref={emailInputRef} />
           </div>
-          <div>
-            <label htmlFor="name">Your Name</label>
-            <input type="text" rows="5" ref={nameInputRef}></input>
+          <div className="name">
+            <input placeholder="Your Email" type="text" rows="5" ref={nameInputRef}></input>
           </div>
           <button type="submit"> Sing Me In</button>
         </form>

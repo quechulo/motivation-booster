@@ -1,9 +1,9 @@
 import { MongoClient } from "mongodb";
-import { password } from "../../../passwords";
+import { user, password } from "../../../passwords";
 
 async function connectDatabase() {
   return await MongoClient.connect(
-    `mongodb+srv://dbAdmin:${password}@cluster23.w305vlv.mongodb.net/booster-newsletter?retryWrites=true&w=majority`
+    `mongodb+srv://${user}:${password}@cluster23.w305vlv.mongodb.net/booster-newsletter?retryWrites=true&w=majority`
   );
 }
 
