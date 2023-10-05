@@ -3,7 +3,7 @@ import { user, password } from "../../../passwords";
 
 async function connectDatabase() {
   return await MongoClient.connect(
-    `mongodb+srv://${user}:${password}@cluster23.w305vlv.mongodb.net/booster-newsletter?retryWrites=true&w=majority`
+    `mongodb+srv://${user}:${password}@cluster0.qmg88hz.mongodb.net/?retryWrites=true&w=majority`
   );
 }
 
@@ -37,7 +37,7 @@ async function handler(req, res) {
     try {
       client = await connectDatabase();
     } catch (error) {
-      res.status(500).json({ message: "Connection to database failed!" });
+      res.status(500).json({ message: "Connection to database failed!", error: error });
       return;
     }
 
@@ -59,7 +59,7 @@ async function handler(req, res) {
     try {
       client = await connectDatabase();
     } catch (error) {
-      res.status(500).json({ message: "Connection to database failed!" });
+      res.status(500).json({ message: "Connection to database failed!", error: error });
       return;
     }
     try {

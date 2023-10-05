@@ -21,13 +21,14 @@ export default function Home() {
     event.preventDefault();
     const enteredEmail = emailInputRef.current.value;
     const enteredName = nameInputRef.current.value;
+    console.log(enteredEmail, enteredName);
 
-    fetch("/api/users", {
+    fetch("http://localhost:8080/addUser", { //http://localhost:8080/addUser" /api/users
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email: enteredEmail, name: enteredName }),
+      body: JSON.stringify({ name: enteredName, email: enteredEmail }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -78,7 +79,7 @@ export default function Home() {
             <input placeholder="Your Email" type="email" id="email" ref={emailInputRef} />
           </div>
           <div className="name">
-            <input placeholder="Your Email" type="text" rows="5" ref={nameInputRef}></input>
+            <input placeholder="Your name" type="text" rows="5" ref={nameInputRef}></input>
           </div>
           <button type="submit"> Sing Me In</button>
         </form>
